@@ -650,7 +650,7 @@ export class PixelStreaming {
             let localCandidate = statsReceivedEvent.data.aggregatedStats.localCandidates.find((candidate) => candidate.id == activeCandidatePair.localCandidateId, null)
 
             // Check if the local candidate is not null, candidate type is relay and the relay protocol is tcp
-            if (localCandidate != null && localCandidate.candidateType == 'relay' && localCandidate.relayProtocol == 'tcp') {
+            if (localCandidate != null && localCandidate.candidateType == 'relay' && (localCandidate.relayProtocol == 'tcp' || localCandidate.relayProtocol == 'tls')) {
 
                 // Send the web rtc tcp relay detected event
                 this._eventEmitter.dispatchEvent(new WebRtcTCPRelayDetectedEvent());
